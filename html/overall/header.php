@@ -9,12 +9,13 @@
   <link rel="shortcut icon" href="views/images/favicon.ico" />
   <meta name="description" content="">
 
-<!--  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:700,400&amp;subset=cyrillic,latin,greek,vietnamese">-->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:700,400&amp;subset=cyrillic,latin,greek,vietnamese">
   <link rel="stylesheet" href="views/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="views/socicon/css/socicon.min.css">
   <link rel="stylesheet" href="views/mobirise/css/style.css">
   <link rel="stylesheet" href="views/mobirise/css/mbr-additional.css" type="text/css">
   <link rel="stylesheet" href="views/fontawesome/css/fonts.css" type="text/css">
+  <link rel="stylesheet" href="views/app/css/format.css" type="text/css">
 
   <script src="views/app/js/generales.js"></script>
 
