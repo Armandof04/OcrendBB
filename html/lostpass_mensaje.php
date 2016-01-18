@@ -9,7 +9,7 @@
 <div class="mbr-section__container container mbr-section__container--isolated">
 
   <div class="alert alert-dismissible alert-success">
-      <strong>Contraseña cambiada!</strong> se ha generado una nueva contraseña <strong><?php echo $password ?></strong> , prueba <a data-toggle="modal" data-target="#Login">iniciar sesión</a> con ella y podrás cambiarla una vez estes dentro. 
+      <strong>Contraseña cambiada!</strong> se ha generado una nueva contraseña <strong><?php echo $password ?></strong> , prueba <a data-toggle="modal" data-target="#Login">iniciar sesión</a> con ella y podrás cambiarla una vez estes dentro.
   </div>
 
 </div>

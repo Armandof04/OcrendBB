@@ -23,6 +23,22 @@
   ?>
 
 <div class="row container">
+
+    <?php
+        if(isset($_SESSION['app_id']) and $_users[$_SESSION['app_id']]['permisos'] >= 2) {
+          echo '
+          <div class="pull-right">
+            <div class="mbr-navbar__column"><ul class="mbr-navbar__items mbr-navbar__items--right mbr-buttons mbr-buttons--freeze mbr-buttons--right btn-inverse mbr-buttons--active"><li class="mbr-navbar__item">
+              <a class="mbr-buttons__btn btn btn-danger" href="?view=cuenta">GESTIONAR FOROS</a>
+            </li></ul></div>
+            <div class="mbr-navbar__column"><ul class="mbr-navbar__items mbr-navbar__items--right mbr-buttons mbr-buttons--freeze mbr-buttons--right btn-inverse mbr-buttons--active"><li class="mbr-navbar__item">
+              <a class="mbr-buttons__btn btn btn-danger" href="?view=categorias">GESTIONAR CATEGORÍAS</a>
+            </li></ul></div>
+          </div>
+          ';
+        }
+    ?>
+
     <ol class="breadcrumb">
       <li><a href="?view=index"><i class="fa fa-home"></i> Inicio</a></li>
     </ol>

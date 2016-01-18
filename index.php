@@ -1,5 +1,9 @@
 <?php
 
+/*
+  1- En class.Categorias.php borrar los temas también, asociados a el foro que se borra cuando se borra una categoría.
+*/
+
 require('core/core.php');
 
 if(isset($_GET['view'])) {

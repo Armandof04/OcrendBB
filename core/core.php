@@ -28,9 +28,11 @@ require('vendor/autoload.php');
 require('core/models/class.Conexion.php');
 require('core/bin/functions/Encrypt.php');
 require('core/bin/functions/Users.php');
+require('core/bin/functions/Categorias.php');
 require('core/bin/functions/EmailTemplate.php');
 require('core/bin/functions/LostpassTemplate.php');
 
-$users = Users();
+$_users = Users();
+$_categorias = Categorias();
 
 ?>
