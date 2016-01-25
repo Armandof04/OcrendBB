@@ -2,6 +2,7 @@
 
 /*
   1- En class.Categorias.php borrar los temas también, asociados a el foro que se borra cuando se borra una categoría.
+  2- En class.ConfigForos.php borrar los temas asociados al foro que se borra
 */
 
 require('core/core.php');

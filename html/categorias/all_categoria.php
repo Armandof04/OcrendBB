@@ -25,7 +25,7 @@
  <div class="row container">
     <div class="pull-right">
       <div class="mbr-navbar__column"><ul class="mbr-navbar__items mbr-navbar__items--right mbr-buttons mbr-buttons--freeze mbr-buttons--right btn-inverse mbr-buttons--active"><li class="mbr-navbar__item">
-           <a class="mbr-buttons__btn btn btn-danger" href="?view=cuenta">GESTIONAR FOROS</a>
+           <a class="mbr-buttons__btn btn btn-danger" href="?view=configforos">GESTIONAR FOROS</a>
        </li></ul></div>
         <div class="mbr-navbar__column"><ul class="mbr-navbar__items mbr-navbar__items--right mbr-buttons mbr-buttons--freeze mbr-buttons--right btn-inverse mbr-buttons--active"><li class="mbr-navbar__item">
             <a class="mbr-buttons__btn btn btn-danger active" href="?view=categorias">GESTIONAR CATEGORÍAS</a>
@@ -48,24 +48,24 @@
          <div class="col-md-12">
            <?php
 
-           if($db->rows($sql) > 0) {
+           if(false != $_categorias) {
             $HTML = '<table class="table"><thead><tr>
             <th style="width: 10%">Id</th>
             <th style="width: 70%">Nombre de categoría</th>
             <th style="width: 20%">Acciones</th>
             </tr></thead>
             <tbody>';
-             while($data = $db->recorrer($sql)) {
+             foreach($_categorias as $id_categoria => $categoria_array) {
                  $HTML .= '<tr>
-                   <td>'.$data['id'].'</td>
-                   <td>'.$data['nombre'].'</td>
+                   <td>'.$_categorias[$id_categoria]['id'].'</td>
+                   <td>'.$_categorias[$id_categoria]['nombre'].'</td>
                    <td>
                      <div class="btn-group">
                       <a href="#" class="btn btn-primary">Acciones</a>
                       <a href="#" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
                       <ul class="dropdown-menu">
-                        <li><a href="?view=categorias&mode=edit&id='.$data['id'].'">Editar</a></li>
-                        <li><a onclick="DeleteItem(\'¿Está seguro de eliminar esta categoría?\',\'?view=categorias&mode=delete&id='.$data['id'].'\')">Eliminar</a></li>
+                        <li><a href="?view=categorias&mode=edit&id='.$_categorias[$id_categoria]['id'].'">Editar</a></li>
+                        <li><a onclick="DeleteItem(\'¿Está seguro de eliminar esta categoría?\',\'?view=categorias&mode=delete&id='.$_categorias[$id_categoria]['id'].'\')">Eliminar</a></li>
                       </ul>
                     </div>
                    </td>

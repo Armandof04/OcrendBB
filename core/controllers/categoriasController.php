@@ -34,11 +34,7 @@ if(isset($_SESSION['app_id']) and $_users[$_SESSION['app_id']]['permisos'] >= 2)
       }
     break;
     default:
-      $db = new Conexion();
-      $sql = $db->query("SELECT * FROM categorias;");
       include(HTML_DIR . 'categorias/all_categoria.php');
-      $db->liberar($sql);
-      $db->close();
     break;
   }
 } else {

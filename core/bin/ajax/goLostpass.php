@@ -20,6 +20,13 @@ if($db->rows($sql) > 0) {
   $mail->Username = PHPMAILER_USER;                 // SMTP username
   $mail->Password = PHPMAILER_PASS;                           // SMTP password
   $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
+  $mail->SMTPOptions = array(
+      'ssl' => array(
+          'verify_peer' => false,
+          'verify_peer_name' => false,
+          'allow_self_signed' => true
+      )
+  );
   $mail->Port = PHPMAILER_PORT;                                    // TCP port to connect to
 
   $mail->setFrom(PHPMAILER_USER, APP_TITLE); //Quien manda el correo?
