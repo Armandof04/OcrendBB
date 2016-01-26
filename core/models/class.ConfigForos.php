@@ -23,6 +23,11 @@ class ConfigForos {
       } else {
         $this->nombre = $this->db->real_escape_string($_POST['nombre']);
         $this->descrip = $this->db->real_escape_string($_POST['descrip']);
+        $this->descrip = str_replace(
+        array('<script>','</script>','<script src','<script type='),
+        '',
+        $this->descrip
+        );
         if($_POST['estado'] == 1) {
           $this->estado = 1;
         } else {

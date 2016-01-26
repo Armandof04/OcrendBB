@@ -32,6 +32,7 @@ require('core/bin/functions/Categorias.php');
 require('core/bin/functions/Foros.php');
 require('core/bin/functions/EmailTemplate.php');
 require('core/bin/functions/LostpassTemplate.php');
+require('core/bin/functions/UrlAmigable.php');
 
 $_users = Users();
 $_categorias = Categorias();
