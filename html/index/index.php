@@ -74,8 +74,8 @@ if(false != $_categorias) {
             '.$_foros[$id_del_foro]['descrip'].'
           </div>
           <div class="col-md-2 left_border" style="text-align: center;font-weight: bold;">
-            '.$_foros[$id_del_foro]['cantidad_temas'].' Temas<br />
-            '.$_foros[$id_del_foro]['cantidad_mensajes'].' Mensajes
+            '.number_format($_foros[$id_del_foro]['cantidad_temas'],0,',','.') .' Temas<br />
+            '.number_format($_foros[$id_del_foro]['cantidad_mensajes'],0,',','.') .' Mensajes
           </div>
           <div class="col-md-2 left_border puntitos" style="line-height: 37px;">
             <a href="#">Ultimo mensaje acá texto largo</a>

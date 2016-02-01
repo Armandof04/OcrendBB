@@ -1,6 +1,6 @@
 <?php
 
-function urlamigable($id,$titulo) {
+function UrlAmigable($id,$titulo) {
   $titulo = $id . '-' . $titulo;
   $titulo = trim($titulo);
   $titulo = str_replace(
