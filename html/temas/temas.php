@@ -24,11 +24,19 @@
 
 <div class="row container">
 
-  <div class="pull-right">
-    <div class="mbr-navbar__column"><ul class="mbr-navbar__items mbr-navbar__items--right mbr-buttons mbr-buttons--freeze mbr-buttons--right btn-inverse mbr-buttons--active"><li class="mbr-navbar__item">
-      <a class="mbr-buttons__btn btn btn-danger" href="#">NUEVO TEMA</a>
-    </li></ul></div>
-  </div>
+   <?php
+
+   $boton = '<div class="pull-right">
+     <div class="mbr-navbar__column"><ul class="mbr-navbar__items mbr-navbar__items--right mbr-buttons mbr-buttons--freeze mbr-buttons--right btn-inverse mbr-buttons--active"><li class="mbr-navbar__item">
+       <a class="mbr-buttons__btn btn btn-danger" href="?view=temas&mode=add&id_foro='.$id_foro.'">NUEVO TEMA</a>
+     </li></ul></div>
+   </div>';
+
+    if(isset($_SESSION['app_id']) and ($_foros[$id_foro]['estado'] == 1 or $_users[$_SESSION['app_id']]['permisos'] == 2)) {
+     echo $boton;
+    }
+
+   ?>
 
     <ol class="breadcrumb">
       <li><a href="?view=index"><i class="fa fa-home"></i> Inicio</a></li>
@@ -55,7 +63,7 @@
                   <img src="views/app/images/foros/anuncio_leido'.$extension.'" />
                 </div>
                 <div class="col-md-7 puntitos" style="padding-left: 0px;line-height: 37px;">
-                  <a href="temas/'.UrlAmigable($anuncio['id'],$anuncio['titulo']).'">'.$anuncio['titulo'].'</a>
+                  <a href="temas/'.UrlAmigable($anuncio['id'],$anuncio['titulo'],$id_foro).'">'.$anuncio['titulo'].'</a>
                 </div>
                 <div class="col-md-2 left_border" style="text-align: center;font-weight: bold;">
                   '.number_format($anuncio['visitas'],0,',','.').' Visitas<br />
@@ -99,7 +107,7 @@
                   <img src="views/app/images/foros/foro_leido'.$extension.'" />
                 </div>
                 <div class="col-md-7 puntitos" style="padding-left: 0px;line-height: 37px;">
-                  <a href="temas/'.UrlAmigable($tema['id'],$tema['titulo']).'">'.$tema['titulo'].'</a>
+                  <a href="temas/'.UrlAmigable($tema['id'],$tema['titulo'],$id_foro).'">'.$tema['titulo'].'</a>
                 </div>
                 <div class="col-md-2 left_border" style="text-align: center;font-weight: bold;">
                   '.number_format($tema['visitas'],0,',','.').' Visitas<br />

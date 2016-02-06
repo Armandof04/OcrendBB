@@ -1,7 +1,12 @@
 <?php
 
-function UrlAmigable($id,$titulo) {
-  $titulo = $id . '-' . $titulo;
+function UrlAmigable($id,$titulo,$id_foro = null) {
+  if(null == $id_foro) {
+    $titulo = $id . '-' . $titulo;
+  } else {
+    $titulo = $id . '-' . $id_foro . '-' . $titulo;
+  }
+
   $titulo = trim($titulo);
   $titulo = str_replace(
       array('á', 'à', 'ä', 'â', 'ª', 'Á', 'À', 'Â', 'Ä'),

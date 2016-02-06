@@ -4,6 +4,7 @@
 */
 
 session_start();
+date_default_timezone_set('America/Caracas');
 
 #Constantes de conexión
 define('DB_HOST','localhost');
@@ -22,6 +23,10 @@ define('PHPMAILER_HOST','p3plcpnl0173.prod.phx3.secureserver.net');
 define('PHPMAILER_USER','public@ocrend.com');
 define('PHPMAILER_PASS','Prinick2016');
 define('PHPMAILER_PORT',465);
+
+#Constantes básicas de personalización
+define('MIN_TITULOS_TEMAS_LONGITUD',9);
+define('MIN_CONTENT_TEMAS_LONGITUD',270);
 
 #Estructura
 require('vendor/autoload.php');
