@@ -45,7 +45,7 @@ class Temas {
     $this->db->query("INSERT INTO temas (titulo,contenido,id_foro,id_dueno,fecha,id_ultimo,fecha_ultimo)
     VALUES ('$this->titulo','$this->content','$this->id_foro','$this->id_dueno','$fecha','$this->id_dueno','$fecha');");
     $ID_TEMA = $this->db->insert_id;
-    $this->db->query("UPDATE foros SET cantidad_temas=cantidad_temas + '1', cantidad_mensajes = cantidad_mensajes + '1' WHERE id='$this->id_foro';");
+    $this->db->query("UPDATE foros SET cantidad_temas=cantidad_temas + '1', cantidad_mensajes = cantidad_mensajes + '1', ultimo_tema = '$this->titulo', id_ultimo_tema='$ID_TEMA' WHERE id='$this->id_foro';");
     header('location: ./temas/' . UrlAmigable($ID_TEMA,$this->titulo,$this->id_foro));
   }
 

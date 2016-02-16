@@ -5,10 +5,7 @@ function Categorias() {
   $sql = $db->query("SELECT * FROM categorias;");
   if($db->rows($sql) > 0) {
     while($data = $db->recorrer($sql)) {
-      $categorias[$data['id']] = array(
-        'id' => $data['id'],
-        'nombre' => $data['nombre']
-      );
+      $categorias[$data['id']] = $data;
     }
   } else {
     $categorias = false;

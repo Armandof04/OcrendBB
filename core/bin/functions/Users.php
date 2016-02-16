@@ -3,23 +3,32 @@
 function Users() {
   $db = new Conexion();
   $sql = $db->query("SELECT * FROM users;");
-  if($db->rows($sql) > 0) {
+  $usuarios_actuales = $db->rows($sql);
+  
+  if(!isset($_SESSION['cantidad_usuarios'])) {
+    $_SESSION['cantidad_usuarios'] = $usuarios_actuales;
+  }
+
+  if($_SESSION['cantidad_usuarios'] != $usuarios_actuales) {
     while($d = $db->recorrer($sql)) {
-      $users[$d['id']] = array(
-        'id' => $d['id'],
-        'user' => $d['user'],
-        'pass' => $d['pass'],
-        'email' => $d['email'],
-        'permisos' => $d['permisos']
-      );
+      $users[$d['id']] = $d;
     }
   } else {
-    $users = false;
+    if(!isset($_SESSION['users'])) {
+      while($d = $db->recorrer($sql)) {
+        $users[$d['id']] = $d;
+      }
+    } else {
+      $users = $_SESSION['users'];
+    }
   }
+
+  $_SESSION['users'] = $users;
+
   $db->liberar($sql);
   $db->close();
 
-  return $users;
+  return $_SESSION['users'];
 }
 
 ?>

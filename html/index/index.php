@@ -65,6 +65,12 @@ if(false != $_categorias) {
           $extension = '_bloqueado.png';
         }
 
+        if($_foros[$id_del_foro]['ultimo_tema'] == '') {
+          $ultimo_tema = '<a href="#">No hay temas creados</a>';
+        } else {
+          $ultimo_tema = '<a href="temas/'.UrlAmigable($_foros[$id_del_foro]['id_ultimo_tema'],$_foros[$id_del_foro]['ultimo_tema'],$id_del_foro).'">'.$_foros[$id_del_foro]['ultimo_tema'].'</a>';
+        }
+
         echo '<div class="row foros">
           <div class="col-md-1" style="height:50px;line-height: 37px;">
             <img src="views/app/images/foros/foro_leido'.$extension.'" />
@@ -78,7 +84,7 @@ if(false != $_categorias) {
             '.number_format($_foros[$id_del_foro]['cantidad_mensajes'],0,',','.') .' Mensajes
           </div>
           <div class="col-md-2 left_border puntitos" style="line-height: 37px;">
-            <a href="#">Ultimo mensaje acá texto largo</a>
+            '.$ultimo_tema.'
           </div>
         </div>';
       }
