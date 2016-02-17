@@ -22,21 +22,29 @@
 
 <div class="row categorias_con_foros">
   <div class="col-sm-12">
-      <div class="row titulo_categoria">Perfil de <?php echo $_users[$id_usuario]['user']; ?></div>
+      <div class="row titulo_categoria">Perfil de <?php echo $_users[$id_usuario]['user']; ?> </div>
 
       <div class="row cajas">
         <div class="col-md-2">
           <center>
 
-            <img src="views/app/images/users/<?php echo $_users[$id_usuario]['img'];?>" class="thumbnail" height="120" />
-            <strong><?php echo $_users[$id_usuario]['user']; ?></strong> <br />
-            <b><?php echo $_users[$id_usuario]['rango']; ?></b> <br />
-            <?php echo $db->recorrer($sql)[0]; ?> temas <br />
-            30 mensajes <br />
-            <?php echo $_users[$id_usuario]['edad']; ?> años<br />
-            Registrado el <?php echo $_users[$id_usuario]['fecha_reg']; ?>
+            <img src="views/app/images/users/<?php echo $_users[$id_usuario]['img']; ?>" class="thumbnail" height="120" />
 
-          </center>
+            <strong><?php echo $_users[$id_usuario]['user']; ?></strong>
+            <img src="views/app/images/<?php echo GetUserStatus($_users[$id_usuario]['ultima_conexion']); ?>" />
+
+            <br />
+            <b style="color: green;">**<?php echo $_users[$id_usuario]['rango']; ?>**</b>
+            <br /><br />
+        </center>
+
+            <ul style="list-style:none; padding-left: 4px;">
+              <li><b><?php echo $db->recorrer($sql)[0]; ?></b> temas </li>
+              <li><b>30</b> mensajes</li>
+              <li><b><?php echo $_users[$id_usuario]['edad']; ?></b> años</li>
+              <li>Registrado el <b><?php echo $_users[$id_usuario]['fecha_reg']; ?></b></li>
+            </ul>
+
 
         </div>
         <div class="col-md-10">
@@ -45,7 +53,7 @@
           </blockquote>
           <hr />
           <p>
-            <?php echo $_users[$id_usuario]['firma']; ?>
+            <?php echo BBcode($_users[$id_usuario]['firma']); ?>
           </p>
         </div>
       </div>

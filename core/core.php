@@ -38,6 +38,9 @@ require('core/bin/functions/Foros.php');
 require('core/bin/functions/EmailTemplate.php');
 require('core/bin/functions/LostpassTemplate.php');
 require('core/bin/functions/UrlAmigable.php');
+require('core/bin/functions/BBcode.php');
+require('core/bin/functions/OnlineUsers.php');
+require('core/bin/functions/GetUserStatus.php');
 
 $_users = Users();
 $_categorias = Categorias();
