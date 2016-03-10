@@ -70,7 +70,7 @@
                   '.number_format($anuncio['respuestas'],0,',','.').' Respuestas
                 </div>
                 <div class="col-md-2 left_border puntitos" style="">
-                  Por <a href="#">'.$_users[$anuncio['id_ultimo']]['user'].'</a><br />
+                  Por <a href="?view=perfil&id='.$anuncio['id_ultimo'].'">'.$_users[$anuncio['id_ultimo']]['user'].'</a><br />
                   '.$anuncio['fecha_ultimo'].'
                 </div>
               </div>';
@@ -114,7 +114,7 @@
                   '.number_format($tema['respuestas'],0,',','.').' Respuestas
                 </div>
                 <div class="col-md-2 left_border puntitos" style="">
-                  Por <a href="#">'.$_users[$tema['id_ultimo']]['user'].'</a><br />
+                  Por <a href="?view=perfil&id='.$tema['id_ultimo'].'">'.$_users[$tema['id_ultimo']]['user'].'</a><br />
                   '.$tema['fecha_ultimo'].'
                 </div>
               </div>';

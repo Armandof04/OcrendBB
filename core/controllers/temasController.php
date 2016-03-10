@@ -9,7 +9,7 @@ if(isset($_GET['id_foro']) and array_key_exists($_GET['id_foro'],$_foros)) {
   $loged = isset($_SESSION['app_id']);
 
   if($loged) {
-    $cerrado = $_foros[$id_foro]['estado'] == 1 or $_users[$_SESSION['app_id']]['permisos'] == 2;
+    $cerrado = ($_foros[$id_foro]['estado'] == 1 or $_users[$_SESSION['app_id']]['permisos'] == 2);
   } else {
     $cerrado = false;
   }

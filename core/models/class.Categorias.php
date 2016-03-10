@@ -38,8 +38,18 @@ class Categorias {
 
   public function Delete() {
     $this->id = intval($_GET['id']);
+
     $q = "DELETE FROM categorias WHERE id='$this->id';";
     $q .= "DELETE FROM foros WHERE id_categoria='$this->id';";
+
+    $sql = $this->db->query("SELECT id FROM foros WHERE id_categoria='$this->id';");
+    if($this->db->rows($sql) > 0) {
+      while($data = $this->db->recorrer($sql)) {
+        $id_foro = $data[0];
+        $q .= "DELETE FROM temas WHERE id_foro='$id_foro';";
+      }
+    }
+    $this->db->liberar($sql);
     $this->db->multi_query($q);
     header('location: ?view=categorias');
   }
