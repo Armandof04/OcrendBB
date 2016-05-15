@@ -16,7 +16,7 @@ define('DB_NAME','ocrendbb');
 define('HTML_DIR','html/');
 define('APP_TITLE','OcrendBB');
 define('APP_COPY','Copyright &copy; ' . date('Y',time()) . ' Ocrend Software.');
-define('APP_URL','http://localhost/GitHub/OcrendBB/');
+define('APP_URL','http://prinick-notebook/OcrendBB/'); //Adaptado a mi nuevo entorno con Ubuntu
 
 #Constantes de PHPMailer
 define('PHPMAILER_HOST','p3plcpnl0173.prod.phx3.secureserver.net');
@@ -41,6 +41,7 @@ require('core/bin/functions/UrlAmigable.php');
 require('core/bin/functions/BBcode.php');
 require('core/bin/functions/OnlineUsers.php');
 require('core/bin/functions/GetUserStatus.php');
+require('core/bin/functions/IncreaseVisita.php');
 
 $_users = Users();
 $_categorias = Categorias();

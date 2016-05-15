@@ -35,36 +35,37 @@
 
 <div class="row categorias_con_foros">
   <div class="col-sm-12">
-      <div class="row titulo_categoria">Crear un nuevo tema en <?php echo $_foros[$id_foro]['nombre'] ?></div>
+      <div class="row titulo_categoria">Editar: <?php echo $tema['titulo'] ?></div>
 
       <div class="row cajas">
         <div class="col-md-9">
-          <form class="form-horizontal" action="?view=temas&mode=add&id_foro=<?php echo $id_foro ?>" method="POST" enctype="application/x-www-form-urlencoded">
+          <form class="form-horizontal" action="?view=temas&mode=edit&id_foro=<?php echo $id_foro ?>&id=<?php echo $_GET['id']; ?>" method="POST" enctype="application/x-www-form-urlencoded">
             <fieldset>
               <div class="form-group">
                 <label for="inputEmail" class="col-lg-2 control-label">Título</label>
                 <div class="col-lg-10">
-                  <input type="text" class="form-control" maxlength="250" name="titulo" placeholder="Nombre para el tema" required="">
+                  <input type="text" class="form-control" maxlength="250" name="titulo" placeholder="Nombre para el tema" value="<?php echo $tema['titulo']; ?>" required="">
                 </div>
               </div>
               <div class="form-group">
                 <label for="inputEmail" class="col-lg-2 control-label">Contenido</label>
                 <div class="col-lg-10">
-                  <textarea class="form-control tema_textarea" name="content" placeholder="Contenido de tu tema, se acepta BBCode" required=""></textarea>
+                  <textarea class="form-control tema_textarea" name="content" placeholder="Contenido de tu tema, se acepta BBCode" required=""><?php echo $tema['contenido']; ?></textarea>
                 </div>
               </div>
               <?php
                 if($_users[$_SESSION['app_id']]['permisos'] > 0) {
+                  $checked = $tema['tipo'] == 2 ? 'checked' : '';
                   echo '<div class="form-group">
                     <label class="col-lg-2">&nbsp;</label>
-                    <label class="col-lg-10"><input type="checkbox" value="1" name="anuncio" /> Crear tema como anuncio</label>
+                    <label class="col-lg-10"><input type="checkbox" value="1" name="anuncio" '. $checked .' /> El tema es un anuncio</label>
                   </div>';
                 }
               ?>
               <div class="form-group">
                 <div class="col-lg-10 col-lg-offset-2">
                   <button type="reset" class="btn btn-default">Resetear</button>
-                  <button type="submit" class="btn btn-primary">Crear</button>
+                  <button type="submit" class="btn btn-primary">Editar</button>
                 </div>
               </div>
             </fieldset>

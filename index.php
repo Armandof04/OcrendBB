@@ -1,5 +1,7 @@
 <?php
 
+//Chequear "cantidad de mensajes" en la SESSION de users para incrementar en 1 cuando se crea un tema
+
 require('core/core.php');
 OnlineUsers();
 
