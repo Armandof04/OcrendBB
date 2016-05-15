@@ -74,7 +74,28 @@ class Temas {
     header('location: ./temas/' . UrlAmigable($this->id,$this->titulo,$this->id_foro));
   }
 
+  private function DeleteLast() {
+    //Chequeamos que el tema que se quiere borrar sea el ultimo del foro
+    $sql = $this->db->query("SELECT id FROM foros WHERE id_ultimo_tema='$this->id' AND id='$this->id_foro' LIMIT 1;");
+    if($this->db->rows($sql) > 0) {
+      //Extraemos el id y nombre del ultimo tema que NO sea el mismo que se va a borrar
+      $sql_2 = $this->db->query("SELECT id,titulo FROM temas WHERE id_foro='$this->id_foro' AND id <> '$this->id' ORDER BY id DESC LIMIT 1;");
+      if($this->db->rows($sql_2) > 0) {
+        $data_t = $this->db->recorrer($sql_2);
+        $id_ultimo_tema = $data_t[0];
+        $ultimo_tema = $data_t[1];
+      } else {
+        $id_ultimo_tema = 0;
+        $ultimo_tema = '';
+      }
+      $this->db->liberar($sql_2);
+      $sql_4 = $this->db->query("UPDATE foros SET id_ultimo_tema='$id_ultimo_tema', ultimo_tema='$ultimo_tema' WHERE id='$this->id_foro' LIMIT 1;");
+    }
+    $this->db->liberar($sql);
+  }
+
   public function Delete() {
+    $this->DeleteLast();
     $sql2 = $this->db->query("SELECT id_dueno FROM temas WHERE id='$this->id' LIMIT 1;");
     if($this->db->rows($sql2) > 0) {
       $sql = $this->db->query("SELECT id_dueno FROM respuestas WHERE id_tema='$this->id';");
@@ -94,6 +115,7 @@ class Temas {
             $mensajes_user_actual++;
           }
         }
+        $prepare_sql->close();
       }
       $this->db->liberar($sql);
 
@@ -106,22 +128,10 @@ class Temas {
       }
       $this->db->multi_query($query);
 
-      //CREAR FUNCION DEDICADA A ESTO, el tema que se esta borrando no debe ser necesariamente el ultimo
-      //El sueño me estaba matando..
-      /*$sql_3 = $this->db->query("SELECT id FROM temas WHERE id_foro='$this->id_foro' ORDER BY id DESC LIMIT 1;");
-      $id_ultimo = $this->db->recorrer($sql_3)[0];
-      $this->db->liberar($sql_3);
-
-      $sql_4 = $this->db->query("SELECT titulo FROM temas WHERE id='$id_ultimo' LIMIT 1;");
-      $ultimo_tema = $this->db->recorrer($sql_4)[0];
-      $this->db->liberar($sql_4);
-
-      $this->db->query("UPDATE foros SET id_ultimo='$id_ultimo',ultimo_tema='$ultimo_tema' WHERE id='$this->id_foro' LIMIT 1;");
-      */
       $this->UpdateMensajesMios($mensajes_user_actual,true);
     }
     $this->db->liberar($sql2);
-    //header('location: index.php?view=foros&id=' . $this->id_foro);
+    header('location: index.php?view=foros&id=' . $this->id_foro);
   }
 
   public function Close(int $estado) {

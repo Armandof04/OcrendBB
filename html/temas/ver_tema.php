@@ -42,7 +42,8 @@
     </div>
 
     <ol class="breadcrumb">
-      <li><a href="?view=index"><i class="fa fa-user"></i> Foro </a></li>
+      <li><a href="?view=index"><i class="fa fa-home"></i> Inicio</a></li>
+      <li><a href="?view=foros&id=<?php echo $id_foro; ?>"><i class="fa fa-comments"></i> <?php echo $_foros[$id_foro]['nombre'] ?></a></li>
     </ol>
 </div>
 
